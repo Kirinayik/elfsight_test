@@ -1,9 +1,10 @@
-import styled from "@emotion/styled";
-import {Box, GridItem} from "@chakra-ui/react";
-import {theme} from '../../assets/styles/theme'
+import styled from '@emotion/styled'
+import { Box, GridItem } from '@chakra-ui/react'
+import { theme } from '../../assets/styles/theme'
+import { IStatus } from '../../types/types'
 
 type ItemStatusProps = {
-    status: 'Alive' | 'Dead' | 'unknown'
+    status: IStatus
 }
 
 export const ItemContainer = styled(GridItem)`
@@ -12,20 +13,20 @@ export const ItemContainer = styled(GridItem)`
     overflow: hidden;
     position: relative;
     cursor: pointer;
-    
+
     & > img {
         width: 100%;
         height: 100%;
     }
-    
+
     &:hover > div {
         opacity: 1;
         visibility: visible;
-        background: rgba(0,0,0, 0.5);
+        background: rgba(0, 0, 0, 0.5);
     }
 `
 
-export const ItemHover = styled(Box)`
+export const ItemHoverContainer = styled(Box)`
     user-select: none;
     pointer-events: none;
     display: flex;
@@ -48,7 +49,7 @@ export const ItemHover = styled(Box)`
 export const ItemStatus = styled(Box)<ItemStatusProps>`
     position: relative;
     padding-left: 10px;
-    
+
     &::after {
         content: '';
         position: absolute;
@@ -58,6 +59,11 @@ export const ItemStatus = styled(Box)<ItemStatusProps>`
         width: 5px;
         height: 5px;
         border-radius: 50%;
-        background: ${({status}) => status === 'Alive' ? theme.colors.green["400"] : status === 'Dead' ? theme.colors.red["600"] : theme.colors.gray['400']};
+        background: ${({ status }) =>
+            status === 'Alive'
+                ? theme.colors.green['400']
+                : status === 'Dead'
+                ? theme.colors.red['600']
+                : theme.colors.gray['400']};
     }
 `
