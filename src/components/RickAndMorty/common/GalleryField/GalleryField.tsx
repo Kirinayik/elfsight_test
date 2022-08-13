@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Box, Flex, Skeleton } from '@chakra-ui/react'
-import { useGetEpisodesQuery } from '../../../../store/rickAndMorty/rickAndMortyApi'
+import { useEpisodesQuery } from '../../../../store/rickAndMorty/rickAndMortyApi'
 import { getEpisodesId } from '../../../../utils/getEpisodesId'
 import GalleryFieldItem from './GalleryFieldItem'
 
@@ -10,7 +10,7 @@ type GalleryFieldProps = {
 }
 
 const GalleryField: FC<GalleryFieldProps> = ({ title, gallery }) => {
-    const { data, error, isLoading } = useGetEpisodesQuery(
+    const { data, error, isLoading } = useEpisodesQuery(
         getEpisodesId(gallery)
     )
 
@@ -22,9 +22,10 @@ const GalleryField: FC<GalleryFieldProps> = ({ title, gallery }) => {
         <Box w={'100%'}>
             <Box fontWeight={'700'}>{title}</Box>
             <Flex
-                overflowX={isLoading ? 'hidden' : 'auto'}
+                overflowX={'scroll'}
                 gap={'10px'}
                 alignItems={'center'}
+                py={'5px'}
             >
                 {isLoading ? (
                     <>

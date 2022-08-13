@@ -1,18 +1,10 @@
-import {
-    Box,
-    Image,
-    Modal,
-    ModalBody,
-    ModalContent,
-    ModalOverlay,
-    VStack,
-} from '@chakra-ui/react'
+import { Box, Image, Modal, ModalBody, ModalContent, ModalOverlay, VStack } from '@chakra-ui/react'
 import { FC } from 'react'
-import { ICharacter } from '../../types/types'
-import Title from './common/Title'
-import InfoField from './common/InfoField'
-import StatusField from './common/StatusField'
-import GalleryField from './common/GalleryField/GalleryField'
+import { ICharacter } from '../../../types/types'
+import Title from '../common/Title'
+import InfoField from '../common/InfoField'
+import StatusField from '../common/StatusField'
+import GalleryField from '../common/GalleryField/GalleryField'
 
 type RickAndMortyModalProps = {
     character: ICharacter
@@ -20,13 +12,12 @@ type RickAndMortyModalProps = {
     handleSetIsOpen: () => void
 }
 
-const RickAndMortyModal: FC<RickAndMortyModalProps> = ({
+const RickAndMortyItemModal: FC<RickAndMortyModalProps> = ({
     character: {
         name,
         gender,
         origin,
         image,
-        location,
         status,
         species,
         episode,
@@ -76,4 +67,4 @@ const RickAndMortyModal: FC<RickAndMortyModalProps> = ({
     )
 }
 
-export default RickAndMortyModal
+export default RickAndMortyItemModal

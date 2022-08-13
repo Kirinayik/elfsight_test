@@ -1,19 +1,20 @@
 import { VStack } from '@chakra-ui/react'
-import { ItemHoverContainer } from './RickAndMorty.styles'
+import { ItemHoverContainer } from '../RickAndMorty.styles'
 import { FC, useEffect, useState } from 'react'
-import { ICharacter, IEpisode } from '../../types/types'
+import { ICharacter, IEpisode } from '../../../types/types'
 import axios from 'axios'
-import Title from './common/Title'
-import StatusField from './common/StatusField'
-import InfoField from './common/InfoField'
+import Title from '../common/Title'
+import StatusField from '../common/StatusField'
+import InfoField from '../common/InfoField'
 
 type RickAndMortyHoverProps = {
     character: ICharacter
 }
 
-const RickAndMortyHover: FC<RickAndMortyHoverProps> = ({
+const RickAndMortyItemHover: FC<RickAndMortyHoverProps> = ({
     character: { location, name, status, species, episode },
 }) => {
+    //TODO: обернуть в контекст
     const [firstEpisode, setFirstEpisode] = useState<{ name: string }>({
         name: '',
     })
@@ -40,4 +41,4 @@ const RickAndMortyHover: FC<RickAndMortyHoverProps> = ({
     )
 }
 
-export default RickAndMortyHover
+export default RickAndMortyItemHover

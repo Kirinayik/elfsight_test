@@ -7,7 +7,7 @@ type TitleProps = {
 
 const Title: FC<TitleProps> = ({ title }) => {
     return (
-        <Heading as="h3" size="lg">
+        <Heading as="h3" size="lg" noOfLines={2}>
             {title}
         </Heading>
     )
