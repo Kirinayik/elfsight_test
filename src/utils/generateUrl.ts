@@ -1,6 +1,6 @@
 import { IFilter } from '../types/types'
 
-export const generateUrl = (filters: IFilter): string => {
+export const generateUrl = (filters: IFilter, page: number): string => {
     const params = []
 
     if (filters.name.trim().length > 0) params.push(`name=${filters.name}`)
@@ -13,5 +13,5 @@ export const generateUrl = (filters: IFilter): string => {
         if (filters[type] !== 'all') params.push(`${type}=${filters[type]}`)
     }
 
-    return `${params.length > 0 ? '?' : ''}` + params.join('&')
+    return `?page=${page}&` + params.join('&')
 }

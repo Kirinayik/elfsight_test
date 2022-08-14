@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useContext, useReducer } from 'react'
+import { ChangeEvent, FC, useReducer } from 'react'
 import {
     Box,
     Button,
@@ -13,13 +13,10 @@ import {
     VStack,
 } from '@chakra-ui/react'
 import RadioFilter from './common/RadioFilter'
-import {
-    filterInitialState,
-    filterReducer,
-    RickAndMortyContext,
-    RickAndMortyContextValue,
-} from '../../../context/rickAndMortyContext'
+import { filterInitialState, filterReducer } from '../../../reducers/filterReducer'
 import { useFilterRadios } from '../../../hooks/useFilterRadios'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { setFilters } from '../../../store/rickAndMorty/rickAndMortyState'
 
 type RickAndMortyFilterModalProps = {
     isOpen: boolean
@@ -28,7 +25,8 @@ type RickAndMortyFilterModalProps = {
 
 const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, handleSetIsOpen }) => {
     const { statusRadios, speciesRadios, genderRadios } = useFilterRadios()
-    const { state, dispatch } = useContext(RickAndMortyContext) as RickAndMortyContextValue
+    const dispatch = useAppDispatch()
+    const { filters } = useAppSelector((state) => state.rickAndMorty)
     const [currentState, currentDispatch] = useReducer(filterReducer, filterInitialState)
     const { name, status, gender, species } = currentState
 
@@ -37,14 +35,8 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
     }
 
     const handleOnClose = () => {
-        if (!Object.is(currentState, state)) {
-            for (let key in currentState) {
-                const type = key as 'name' | 'gender' | 'status' | 'species'
-
-                if (currentState[type] !== state[type]) {
-                    dispatch({ type, payload: currentState[type] })
-                }
-            }
+        if (JSON.stringify(currentState) !== JSON.stringify(filters)) {
+            dispatch(setFilters(currentState))
         }
 
         handleSetIsOpen()
