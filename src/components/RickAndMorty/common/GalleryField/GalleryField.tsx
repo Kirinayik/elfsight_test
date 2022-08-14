@@ -10,9 +10,7 @@ type GalleryFieldProps = {
 }
 
 const GalleryField: FC<GalleryFieldProps> = ({ title, gallery }) => {
-    const { data, error, isLoading } = useEpisodesQuery(
-        getEpisodesId(gallery)
-    )
+    const { data, error, isLoading } = useEpisodesQuery(getEpisodesId(gallery))
 
     if (error) {
         return null
@@ -21,21 +19,12 @@ const GalleryField: FC<GalleryFieldProps> = ({ title, gallery }) => {
     return (
         <Box w={'100%'}>
             <Box fontWeight={'700'}>{title}</Box>
-            <Flex
-                overflowX={'scroll'}
-                gap={'10px'}
-                alignItems={'center'}
-                py={'5px'}
-            >
+            <Flex overflowX={'scroll'} gap={'10px'} alignItems={'center'} py={'5px'}>
                 {isLoading ? (
                     <>
                         {gallery.map((_, idx) => (
                             <Skeleton key={idx} h={'100%'}>
-                                <GalleryFieldItem
-                                    key={idx}
-                                    name={'name'}
-                                    episode={'episode'}
-                                />
+                                <GalleryFieldItem key={idx} name={'name'} episode={'episode'} />
                             </Skeleton>
                         ))}
                     </>
@@ -44,17 +33,10 @@ const GalleryField: FC<GalleryFieldProps> = ({ title, gallery }) => {
                         {data &&
                             (Array.isArray(data) ? (
                                 data.map(({ id, name, episode }) => (
-                                    <GalleryFieldItem
-                                        key={id}
-                                        name={name}
-                                        episode={episode}
-                                    />
+                                    <GalleryFieldItem key={id} name={name} episode={episode} />
                                 ))
                             ) : (
-                                <GalleryFieldItem
-                                    name={data.name}
-                                    episode={data.episode}
-                                />
+                                <GalleryFieldItem name={data.name} episode={data.episode} />
                             ))}
                     </>
                 )}

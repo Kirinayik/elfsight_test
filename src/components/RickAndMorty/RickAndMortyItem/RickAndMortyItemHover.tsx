@@ -31,10 +31,7 @@ const RickAndMortyItemHover: FC<RickAndMortyHoverProps> = ({
             <VStack spacing="10px" alignItems={'flex-start'}>
                 <Title title={name} />
                 <StatusField status={status} species={species} />
-                <InfoField
-                    text={'Last known location:'}
-                    value={location.name}
-                />
+                <InfoField text={'Last known location:'} value={location.name} />
                 <InfoField text={'First seen in:'} value={firstEpisode.name} />
             </VStack>
         </ItemHoverContainer>

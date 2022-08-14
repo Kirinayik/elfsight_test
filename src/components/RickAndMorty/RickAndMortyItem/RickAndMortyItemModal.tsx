@@ -13,52 +13,26 @@ type RickAndMortyModalProps = {
 }
 
 const RickAndMortyItemModal: FC<RickAndMortyModalProps> = ({
-    character: {
-        name,
-        gender,
-        origin,
-        image,
-        status,
-        species,
-        episode,
-    },
+    character: { name, gender, origin, image, status, species, episode },
     isOpen,
     handleSetIsOpen,
 }) => {
     return (
-        <Modal
-            isOpen={isOpen}
-            onClose={handleSetIsOpen}
-            isCentered
-            size={'2xl'}
-        >
+        <Modal isOpen={isOpen} onClose={handleSetIsOpen} isCentered size={'2xl'}>
             <ModalOverlay />
             <ModalContent sx={{ overflow: 'hidden' }}>
                 <ModalBody p={0}>
                     <Box display={'flex'} fontSize={'16px'}>
                         <Box flexBasis={'50%'}>
-                            <Image
-                                w={'100%'}
-                                h={'100%'}
-                                src={image}
-                                alt={name}
-                            />
+                            <Image w={'100%'} h={'100%'} src={image} alt={name} />
                         </Box>
-                        <VStack
-                            flexBasis={'50%'}
-                            padding={'15px'}
-                            alignItems={'flex-start'}
-                            overflow={'hidden'}
-                        >
+                        <VStack flexBasis={'50%'} padding={'15px'} alignItems={'flex-start'} overflow={'hidden'}>
                             <Title title={name} />
                             <StatusField status={status} species={species} />
                             <InfoField text={'Gender:'} value={gender} />
                             <InfoField text={'Origin:'} value={origin.name} />
                             <InfoField text={'First seen in:'} value={name} />
-                            <GalleryField
-                                title={'Episodes:'}
-                                gallery={episode}
-                            />
+                            <GalleryField title={'Episodes:'} gallery={episode} />
                         </VStack>
                     </Box>
                 </ModalBody>

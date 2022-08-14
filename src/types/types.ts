@@ -36,5 +36,17 @@ export interface IEpisode {
 
 export type IStatus = 'Alive' | 'Dead' | 'unknown'
 
+export interface IFilter {
+    name: string
+    status: string
+    gender: string
+    species: string
+}
+
+export interface Action {
+    type: string
+    payload: string
+}
+
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

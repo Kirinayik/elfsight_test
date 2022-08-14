@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { ChangeEvent, FC, useContext, useReducer } from 'react'
 import {
     Box,
     Flex,
@@ -11,25 +11,45 @@ import {
     VStack,
 } from '@chakra-ui/react'
 import RadioFilter from './common/RadioFilter'
-import { useFilterParams } from '../../../hooks/useFilterParams'
+import {
+    filterInitialState,
+    filterReducer,
+    RickAndMortyContext,
+    RickAndMortyContextValue,
+} from '../../../context/rickAndMortyContext'
+import { useFilterRadios } from '../../../hooks/useFilterRadios'
 
 type RickAndMortyFilterModalProps = {
     isOpen: boolean
     handleSetIsOpen: () => void
 }
 
-const RickAndMortyFilterModal:FC<RickAndMortyFilterModalProps> = ({isOpen, handleSetIsOpen}) => {
-    const statusRadios = [{value: 'alive', name: 'Alive'}, {value: 'dead', name: 'Dead'},{value: 'unknown', name: 'Unknown'}, {value: 'all', name: 'All'}]
-    const genderRadios = [{value: 'female', name: 'Female'}, {value: 'male', name: 'Male'},{value: 'genderless', name: 'Genderless'},{value: 'unknown', name: 'Unknown'}, {value: 'all', name: 'All'}]
-    const speciesRadios = [{value: 'human', name: 'Human'}, {value: 'alien', name: 'Alien'}, {value: 'all', name: 'All'}]
-    const {status, species,  gender, name, setStatus, setSpecies, setGender, handleSetName} = useFilterParams()
+const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, handleSetIsOpen }) => {
+    const { statusRadios, speciesRadios, genderRadios } = useFilterRadios()
+    const { state, dispatch } = useContext(RickAndMortyContext) as RickAndMortyContextValue
+    const [currentState, currentDispatch] = useReducer(filterReducer, filterInitialState)
+    const { name, status, gender, species } = currentState
+
+    const handleSetInput = (e: ChangeEvent<HTMLInputElement>) => {
+        currentDispatch({ type: 'name', payload: e.target.value })
+    }
+
+    const handleOnClose = () => {
+        if (!Object.is(currentState, state)) {
+            for (let key in currentState) {
+                const type = key as 'name' | 'gender' | 'status' | 'species'
+
+                if (currentState[type] !== state[type]) {
+                    dispatch({ type, payload: currentState[type] })
+                }
+            }
+        }
+
+        handleSetIsOpen()
+    }
 
     return (
-        <Modal
-            isOpen={isOpen}
-            onClose={handleSetIsOpen}
-            isCentered
-            size={'2xl'}>
+        <Modal isOpen={isOpen} onClose={handleOnClose} isCentered size={'2xl'}>
             <ModalOverlay />
             <ModalContent>
                 <ModalCloseButton />
@@ -37,19 +57,34 @@ const RickAndMortyFilterModal:FC<RickAndMortyFilterModalProps> = ({isOpen, handl
                     <VStack alignItems={'stretch'} spacing={5}>
                         <Flex gap={'30px'} alignItems={'center'}>
                             <Box>Name: </Box>
-                            <Input value={name} onChange={handleSetName}/>
+                            <Input value={name} onChange={handleSetInput} />
                         </Flex>
                         <Flex gap={'30px'}>
                             <Box>Status: </Box>
-                            <RadioFilter radios={statusRadios} currentValue={status} setValue={setStatus}/>
+                            <RadioFilter
+                                value={status}
+                                dispatch={currentDispatch}
+                                radios={statusRadios}
+                                type={'status'}
+                            />
                         </Flex>
                         <Flex gap={'30px'}>
                             <Box>Gender: </Box>
-                            <RadioFilter radios={genderRadios} currentValue={gender} setValue={setGender}/>
+                            <RadioFilter
+                                value={gender}
+                                dispatch={currentDispatch}
+                                radios={genderRadios}
+                                type={'gender'}
+                            />
                         </Flex>
                         <Flex gap={'30px'}>
                             <Box>Species: </Box>
-                            <RadioFilter radios={speciesRadios} currentValue={species} setValue={setSpecies}/>
+                            <RadioFilter
+                                value={species}
+                                dispatch={currentDispatch}
+                                radios={speciesRadios}
+                                type={'species'}
+                            />
                         </Flex>
                     </VStack>
                 </ModalBody>

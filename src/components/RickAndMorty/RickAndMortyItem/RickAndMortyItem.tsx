@@ -18,11 +18,7 @@ const RickAndMortyItem: FC<RickAndMortyItemProps> = ({ character }) => {
         <ItemContainer onClick={handleSetIsOpen}>
             <Image src={image} alt={name} />
             <RickAndMortyItemHover character={character} />
-            <RickAndMortyItemModal
-                character={character}
-                isOpen={isOpen}
-                handleSetIsOpen={handleSetIsOpen}
-            />
+            <RickAndMortyItemModal character={character} isOpen={isOpen} handleSetIsOpen={handleSetIsOpen} />
         </ItemContainer>
     )
 }
