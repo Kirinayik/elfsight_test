@@ -1,5 +1,5 @@
-import { Image } from '@chakra-ui/react'
-import { FC } from 'react'
+import { Image, Skeleton } from '@chakra-ui/react'
+import { FC, useState } from 'react'
 import { ICharacter } from '../../../types/types'
 import { ItemContainer } from '../RickAndMorty.styles'
 import { useModal } from '../../../hooks/useModal'
@@ -13,10 +13,15 @@ type RickAndMortyItemProps = {
 const RickAndMortyItem: FC<RickAndMortyItemProps> = ({ character }) => {
     const [isOpen, handleSetIsOpen] = useModal()
     const { name, image } = character
+    const [imageLoaded, setImageLoaded] = useState<boolean>(false)
+
+    const handleSetImageLoaded = () => void setImageLoaded(true)
 
     return (
         <ItemContainer onClick={handleSetIsOpen}>
-            <Image src={image} alt={name} />
+            <Skeleton isLoaded={imageLoaded}>
+                <Image loading={'lazy'} src={image} alt={name} onLoad={handleSetImageLoaded} />
+            </Skeleton>
             <RickAndMortyItemHover character={character} />
             <RickAndMortyItemModal character={character} isOpen={isOpen} handleSetIsOpen={handleSetIsOpen} />
         </ItemContainer>

@@ -30,8 +30,10 @@ export const filterReducer = (state: IFilter, action: Action) => {
             return { ...state, gender: action.payload }
         case 'species':
             return { ...state, species: action.payload }
+        case 'clearState':
+            return filterInitialState
         default:
-            throw new Error('')
+            throw new Error('Invalid type')
     }
 }
 

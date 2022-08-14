@@ -7,8 +7,8 @@ import { generateUrl } from '../../../utils/generateUrl'
 
 const RickAndMortyGrid = () => {
     const { state } = useContext(RickAndMortyContext) as RickAndMortyContextValue
-    const { data, error, isLoading, isFetching } = useCharactersQuery(generateUrl(state))
-    console.log(state)
+    const { data, isFetching } = useCharactersQuery(generateUrl(state))
+
     if (isFetching) {
         return (
             <VStack flexGrow={'1'} justifyContent={'center'}>
@@ -18,10 +18,12 @@ const RickAndMortyGrid = () => {
     }
 
     return (
-        <Grid templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
-              templateRows={"repeat(auto-fit, minmax(240px, 1fr))"} gap={6}>
+        <Grid
+            templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
+            templateRows={'repeat(auto-fit, minmax(240px, 1fr))'}
+            gap={6}
+        >
             {data && data.results.map((character) => <RickAndMortyItem key={character.id} character={character} />)}
-            {error && <Box>Something went wrong</Box>}
         </Grid>
     )
 }

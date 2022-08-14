@@ -1,12 +1,14 @@
 import { ChangeEvent, FC, useContext, useReducer } from 'react'
 import {
     Box,
+    Button,
     Flex,
     Input,
     Modal,
     ModalBody,
     ModalCloseButton,
     ModalContent,
+    ModalFooter,
     ModalOverlay,
     VStack,
 } from '@chakra-ui/react'
@@ -46,6 +48,13 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
         }
 
         handleSetIsOpen()
+    }
+
+    const handleClearFilters = () => {
+        currentDispatch({
+            type: 'clearState',
+            payload: '',
+        })
     }
 
     return (
@@ -88,6 +97,11 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
                         </Flex>
                     </VStack>
                 </ModalBody>
+                <ModalFooter justifyContent={'flex-start'}>
+                    <Button colorScheme={'facebook'} onClick={handleClearFilters}>
+                        Clear filters
+                    </Button>
+                </ModalFooter>
             </ModalContent>
         </Modal>
     )
