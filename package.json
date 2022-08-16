@@ -9,8 +9,7 @@
     "build": "set NODE_ENV=production&& webpack",
     "prettier": "prettier --write src/**",
     "eslint": "npx eslint src/**",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "test": "jest"
   },
   "author": "https://github.com/Kirinayik",
