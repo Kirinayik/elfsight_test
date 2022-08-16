@@ -2,9 +2,9 @@ import { VStack } from '@chakra-ui/react'
 import { ItemHoverContainer } from '../RickAndMorty.styles'
 import { FC } from 'react'
 import { ICharacter } from '../../../types/types'
-import Title from '../common/Title'
-import StatusField from '../common/StatusField'
-import InfoField from '../common/InfoField'
+import Title from './common/Title'
+import StatusField from './common/StatusField'
+import InfoField from './common/InfoField'
 import { useEpisodesQuery } from '../../../store/rickAndMorty/rickAndMortyApi'
 
 type RickAndMortyHoverProps = {

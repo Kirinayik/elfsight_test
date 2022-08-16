@@ -1,6 +1,6 @@
 import { Text, VStack } from '@chakra-ui/react'
 import { FC } from 'react'
-import { IEpisode } from '../../../../types/types'
+import { IEpisode } from '../../../../../types/types'
 
 type GalleryFieldItemProps = {
     episode: IEpisode

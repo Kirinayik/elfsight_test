@@ -1,7 +1,7 @@
-import { ItemStatus } from '../RickAndMorty.styles'
+import { ItemStatus } from '../../RickAndMorty.styles'
 import { Box, HStack } from '@chakra-ui/react'
 import { FC } from 'react'
-import { IStatus } from '../../../types/types'
+import { IStatus } from '../../../../types/types'
 
 type StatusFieldProps = {
     status: IStatus

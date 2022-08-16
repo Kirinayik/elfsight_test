@@ -11,10 +11,10 @@ import {
 } from '@chakra-ui/react'
 import { FC } from 'react'
 import { ICharacter } from '../../../types/types'
-import Title from '../common/Title'
-import InfoField from '../common/InfoField'
-import StatusField from '../common/StatusField'
-import GalleryField from '../common/GalleryField/GalleryField'
+import Title from './common/Title'
+import InfoField from './common/InfoField'
+import StatusField from './common/StatusField'
+import GalleryField from './common/GalleryField/GalleryField'
 
 type RickAndMortyModalProps = {
     character: ICharacter
