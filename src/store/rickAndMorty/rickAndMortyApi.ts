@@ -9,12 +9,13 @@ export const rickAndMortyApi = createApi({
     endpoints: (builder) => ({
         characters: builder.query<IRickAndMortyResponse, string>({
             query: (params) => `/character${params}`,
-            providesTags: (result) => ['Characters'],
+            providesTags: () => ['Characters'],
             async onQueryStarted(args, { dispatch, getState, queryFulfilled }) {
                 try {
                     const {
                         data: { results, info },
                     } = await queryFulfilled
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-ignore
                     const { page } = getState().rickAndMorty
 
@@ -30,7 +31,7 @@ export const rickAndMortyApi = createApi({
         }),
         episodes: builder.query<IEpisode | IEpisode[], string>({
             query: (query) => `/episode/${query}`,
-            providesTags: (result) => ['Episodes'],
+            providesTags: () => ['Episodes'],
         }),
     }),
 })

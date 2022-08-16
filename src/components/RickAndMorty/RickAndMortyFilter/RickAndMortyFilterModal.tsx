@@ -43,7 +43,7 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
 
     const handleSetFilters = () => {
         dispatch(setFilters(currentState))
-        console.log(currentState)
+
         handleSetIsOpen()
     }
 

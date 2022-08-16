@@ -22,6 +22,8 @@ const RickAndMortyItemHover: FC<RickAndMortyHoverProps> = ({
                 <Title title={name} />
                 <StatusField status={status} species={species} />
                 <InfoField text={'Last known location:'} value={location.name} />
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/*@ts-ignore*/}
                 <InfoField text={'First seen in:'} value={data?.name} />
             </VStack>
         </ItemHoverContainer>

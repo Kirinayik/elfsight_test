@@ -3,6 +3,7 @@ import { Box, Flex, Skeleton } from '@chakra-ui/react'
 import { useEpisodesQuery } from '../../../../store/rickAndMorty/rickAndMortyApi'
 import { getEpisodesId } from '../../../../utils/getEpisodesId'
 import GalleryFieldItem from './GalleryFieldItem'
+import { IEpisode } from '../../../../types/types'
 
 type GalleryFieldProps = {
     gallery: string[]
@@ -33,7 +34,7 @@ const GalleryField: FC<GalleryFieldProps> = ({ title, gallery }) => {
                         {Array.isArray(data) ? (
                             data.map((episode) => <GalleryFieldItem key={episode.id} episode={episode} />)
                         ) : (
-                            <GalleryFieldItem episode={data} />
+                            <GalleryFieldItem episode={data as IEpisode} />
                         )}
                     </>
                 )}

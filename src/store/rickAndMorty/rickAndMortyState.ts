@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSlice, EntityState, PayloadAction } from '@reduxjs/toolkit'
 import { ICharacter, IFilter, RootState } from '../../types/types'
 
-interface IState {
+export interface IState {
     filters: IFilter
     page: number
     total: number

@@ -5,7 +5,7 @@ export const generateUrl = (filters: IFilter, page: number): string => {
 
     if (filters.name.trim().length > 0) params.push(`name=${filters.name}`)
 
-    for (let key in filters) {
+    for (const key in filters) {
         if (key === 'name') continue
 
         const type = key as 'status' | 'gender' | 'species'
