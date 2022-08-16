@@ -1,0 +1,9 @@
+webpack.config.js
+babel.config.js
+tsconfig.json
+
+public
+dist
+.idea
+
+src/__tests__

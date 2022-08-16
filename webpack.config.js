@@ -1,12 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 module.exports = {
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-  entry: './src/index.tsx',
+  entry: {
+    index: './src/index.tsx',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: "dist/[name].js",
+    filename: "[name].bundle.js",
     clean: true,
   },
   devServer: {
@@ -21,9 +24,6 @@ module.exports = {
     client: {
       reconnect: 5,
     },
-  },
-  optimization: {
-    runtimeChunk: 'single',
   },
   module: {
     rules: [
@@ -55,5 +55,6 @@ module.exports = {
       template: "./public/index.html",
       favicon: './public/favicon.ico'
     }),
+    new BundleAnalyzerPlugin()
   ],
 }

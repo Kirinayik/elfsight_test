@@ -12,6 +12,7 @@ export const store = configureStore({
         getDefaultMiddleware({
             serializableCheck: false,
         }).concat(rickAndMortyApi.middleware),
+    devTools: process.env.NODE_ENV !== 'production',
 })
 
 setupListeners(store.dispatch)

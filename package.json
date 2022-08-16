@@ -1,5 +1,6 @@
 {
   "name": "elfsight_test",
+  "homepage": "https://Kirinayik.github.io/elfsight_test",
   "version": "1.0.0",
   "description": "The Rick and Morty widget",
   "main": "index.js",
@@ -8,6 +9,8 @@
     "build": "set NODE_ENV=production&& webpack",
     "prettier": "prettier --write src/**",
     "eslint": "npx eslint src/**",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "jest"
   },
   "author": "https://github.com/Kirinayik",
@@ -19,7 +22,6 @@
     "@reduxjs/toolkit": "^1.8.4",
     "axios": "^0.27.2",
     "emotion-normalize": "^11.0.1",
-    "framer-motion": "^7.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2"
@@ -30,6 +32,7 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
     "@emotion/babel-plugin": "^11.10.0",
+    "@fvilers/disable-react-devtools": "^1.3.0",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
@@ -38,9 +41,11 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "typescript": "^4.7.4",
     "webpack": "^5.74.0",
+    "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.10.0"
   }

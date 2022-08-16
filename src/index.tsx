@@ -4,6 +4,11 @@ import { theme } from './assets/styles/theme'
 import App from './App'
 import { Provider } from 'react-redux'
 import { store } from './store'
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+
+if (process.env.NODE_ENV === 'production') {
+    disableReactDevTools()
+}
 
 const root = createRoot(document.getElementById('root') as HTMLDivElement)
 root.render(
