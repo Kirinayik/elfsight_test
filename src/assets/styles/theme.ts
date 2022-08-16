@@ -16,5 +16,5 @@ export const theme = extendTheme({
         lg: '1080px',
         xl: '1200px',
         '2xl': '1500px',
-    }
+    },
 })

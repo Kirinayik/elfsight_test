@@ -1,4 +1,14 @@
-import { Box, Image, Modal, ModalBody, ModalContent, ModalOverlay, VStack } from '@chakra-ui/react'
+import {
+    Box,
+    Flex,
+    Image,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalOverlay,
+    VStack,
+} from '@chakra-ui/react'
 import { FC } from 'react'
 import { ICharacter } from '../../../types/types'
 import Title from '../common/Title'
@@ -18,11 +28,22 @@ const RickAndMortyItemModal: FC<RickAndMortyModalProps> = ({
     handleSetIsOpen,
 }) => {
     return (
-        <Modal isOpen={isOpen} onClose={handleSetIsOpen} isCentered size={'2xl'}>
+        <Modal
+            isOpen={isOpen}
+            onClose={handleSetIsOpen}
+            isCentered
+            size={{
+                base: 'full',
+                sm: 'md',
+                md: '2xl',
+            }}
+            scrollBehavior={'inside'}
+        >
             <ModalOverlay />
             <ModalContent sx={{ overflow: 'hidden' }}>
+                <ModalCloseButton />
                 <ModalBody p={0}>
-                    <Box display={'flex'} fontSize={'16px'}>
+                    <Flex fontSize={'16px'} flexDir={['column', null, null, 'row']}>
                         <Box flexBasis={'50%'}>
                             <Image w={'100%'} h={'100%'} src={image} alt={name} />
                         </Box>
@@ -34,7 +55,7 @@ const RickAndMortyItemModal: FC<RickAndMortyModalProps> = ({
                             <InfoField text={'First seen in:'} value={name} />
                             <GalleryField title={'Episodes:'} gallery={episode} />
                         </VStack>
-                    </Box>
+                    </Flex>
                 </ModalBody>
             </ModalContent>
         </Modal>

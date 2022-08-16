@@ -9,13 +9,13 @@ import {
     ModalCloseButton,
     ModalContent,
     ModalFooter,
-    ModalOverlay, useTheme,
+    ModalOverlay,
     VStack,
 } from '@chakra-ui/react'
 import RadioFilter from './common/RadioFilter'
 import { filterInitialState, filterReducer } from '../../../reducers/filterReducer'
 import { useFilterRadios } from '../../../hooks/useFilterRadios'
-import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { useAppDispatch } from '../../../store/hooks'
 import { setFilters } from '../../../store/rickAndMorty/rickAndMortyState'
 
 type RickAndMortyFilterModalProps = {
@@ -48,23 +48,31 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
     }
 
     return (
-        <Modal isOpen={isOpen} onClose={handleOnClose} isCentered size={{
-            base: 'full',
-            sm: 'md',
-            md: '2xl'
-        }}
-        scrollBehavior={'inside'}
+        <Modal
+            isOpen={isOpen}
+            onClose={handleOnClose}
+            isCentered
+            size={{
+                base: 'full',
+                sm: 'md',
+                md: '2xl',
+            }}
+            scrollBehavior={'inside'}
         >
             <ModalOverlay />
             <ModalContent>
                 <ModalCloseButton />
                 <ModalBody py={'50px'} pr={'30px'}>
                     <VStack alignItems={'stretch'} gap={'30px'} spacing={0}>
-                        <Flex gap={['10px']} alignItems={['flex-start', null, null, 'center']} flexDir={['column', null, null, 'row',]}>
+                        <Flex
+                            gap={['10px']}
+                            alignItems={['flex-start', null, null, 'center']}
+                            flexDir={['column', null, null, 'row']}
+                        >
                             <Box>Name: </Box>
                             <Input value={name} onChange={handleSetInput} />
                         </Flex>
-                        <Flex gap={['10px']} flexDir={['column', null, null, 'row',]}>
+                        <Flex gap={['10px']} flexDir={['column', null, null, 'row']}>
                             <Box>Status: </Box>
                             <RadioFilter
                                 value={status}
@@ -73,7 +81,7 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
                                 type={'status'}
                             />
                         </Flex>
-                        <Flex gap={['10px']} flexDir={['column', null, null, 'row',]}>
+                        <Flex gap={['10px']} flexDir={['column', null, null, 'row']}>
                             <Box>Gender: </Box>
                             <RadioFilter
                                 value={gender}
@@ -82,7 +90,7 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
                                 type={'gender'}
                             />
                         </Flex>
-                        <Flex gap={['10px']} flexDir={['column', null, null, 'row',]}>
+                        <Flex gap={['10px']} flexDir={['column', null, null, 'row']}>
                             <Box>Species: </Box>
                             <RadioFilter
                                 value={species}
@@ -97,9 +105,7 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
                     <Button colorScheme={'facebook'} onClick={handleSetFilters}>
                         Submit
                     </Button>
-                    <Button onClick={handleOnClose}>
-                        Close
-                    </Button>
+                    <Button onClick={handleOnClose}>Close</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

@@ -25,7 +25,7 @@ const RickAndMortyGrid = () => {
             </Grid>
             {isFetching ? (
                 <Flex justifyContent={'center'}>
-                    <Spinner size={'lg'}/>
+                    <Spinner size={'lg'} />
                 </Flex>
             ) : (
                 <>
