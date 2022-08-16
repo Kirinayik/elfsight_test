@@ -1,15 +1,36 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IRickAndMortyResponse } from '../../types/types'
+import { IEpisode, IRickAndMortyResponse } from '../../types/types'
+import { setCharacters, updateCharacters } from './rickAndMortyState'
 
 export const rickAndMortyApi = createApi({
     reducerPath: 'rickAndMortyApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://rickandmortyapi.com/api' }),
+    tagTypes: ['Characters', 'Episodes'],
     endpoints: (builder) => ({
         characters: builder.query<IRickAndMortyResponse, string>({
             query: (params) => `/character${params}`,
+            providesTags: (result) => ['Characters'],
+            async onQueryStarted(args, { dispatch, getState, queryFulfilled }) {
+                try {
+                    const {
+                        data: { results, info },
+                    } = await queryFulfilled
+                    // @ts-ignore
+                    const { page } = getState().rickAndMorty
+
+                    if (page === 1) {
+                        dispatch(setCharacters({ total: info.pages, results }))
+                    } else {
+                        dispatch(updateCharacters(results))
+                    }
+                } catch (e) {
+                    console.log(e)
+                }
+            },
         }),
-        episodes: builder.query({
+        episodes: builder.query<IEpisode | IEpisode[], string>({
             query: (query) => `/episode/${query}`,
+            providesTags: (result) => ['Episodes'],
         }),
     }),
 })

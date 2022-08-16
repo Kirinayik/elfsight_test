@@ -24,20 +24,17 @@ const GalleryField: FC<GalleryFieldProps> = ({ title, gallery }) => {
                     <>
                         {gallery.map((_, idx) => (
                             <Skeleton key={idx} h={'100%'}>
-                                <GalleryFieldItem key={idx} name={'name'} episode={'episode'} />
+                                <GalleryFieldItem key={idx} episode={{ name: 'name', episode: 'episode', id: idx }} />
                             </Skeleton>
                         ))}
                     </>
                 ) : (
                     <>
-                        {data &&
-                            (Array.isArray(data) ? (
-                                data.map(({ id, name, episode }) => (
-                                    <GalleryFieldItem key={id} name={name} episode={episode} />
-                                ))
-                            ) : (
-                                <GalleryFieldItem name={data.name} episode={data.episode} />
-                            ))}
+                        {Array.isArray(data) ? (
+                            data.map((episode) => <GalleryFieldItem key={episode.id} episode={episode} />)
+                        ) : (
+                            <GalleryFieldItem episode={data} />
+                        )}
                     </>
                 )}
             </Flex>

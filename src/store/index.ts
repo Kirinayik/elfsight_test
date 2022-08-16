@@ -8,7 +8,10 @@ export const store = configureStore({
         rickAndMorty: rickAndMortyReducer,
         [rickAndMortyApi.reducerPath]: rickAndMortyApi.reducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(rickAndMortyApi.middleware),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }).concat(rickAndMortyApi.middleware),
 })
 
 setupListeners(store.dispatch)

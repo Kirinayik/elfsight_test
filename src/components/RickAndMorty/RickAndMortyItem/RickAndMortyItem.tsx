@@ -20,7 +20,7 @@ const RickAndMortyItem: FC<RickAndMortyItemProps> = ({ character }) => {
     return (
         <ItemContainer onClick={handleSetIsOpen}>
             <Skeleton isLoaded={imageLoaded}>
-                <Image loading={'lazy'} src={image} alt={name} onLoad={handleSetImageLoaded} />
+                <Image w={'100%'} loading={'lazy'} src={image} alt={name} onLoad={handleSetImageLoaded} />
             </Skeleton>
             <RickAndMortyItemHover character={character} />
             <RickAndMortyItemModal character={character} isOpen={isOpen} handleSetIsOpen={handleSetIsOpen} />
