@@ -9,7 +9,7 @@ import {
     ModalCloseButton,
     ModalContent,
     ModalFooter,
-    ModalOverlay,
+    ModalOverlay, useTheme,
     VStack,
 } from '@chakra-ui/react'
 import RadioFilter from './common/RadioFilter'
@@ -26,7 +26,6 @@ type RickAndMortyFilterModalProps = {
 const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, handleSetIsOpen }) => {
     const { statusRadios, speciesRadios, genderRadios } = useFilterRadios()
     const dispatch = useAppDispatch()
-    const { filters } = useAppSelector((state) => state.rickAndMorty)
     const [currentState, currentDispatch] = useReducer(filterReducer, filterInitialState)
     const { name, status, gender, species } = currentState
 
@@ -35,32 +34,37 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
     }
 
     const handleOnClose = () => {
-        if (JSON.stringify(currentState) !== JSON.stringify(filters)) {
-            dispatch(setFilters(currentState))
-        }
-
-        handleSetIsOpen()
-    }
-
-    const handleClearFilters = () => {
         currentDispatch({
             type: 'clearState',
             payload: '',
         })
+        handleSetIsOpen()
+    }
+
+    const handleSetFilters = () => {
+        dispatch(setFilters(currentState))
+        console.log(currentState)
+        handleSetIsOpen()
     }
 
     return (
-        <Modal isOpen={isOpen} onClose={handleOnClose} isCentered size={'2xl'}>
+        <Modal isOpen={isOpen} onClose={handleOnClose} isCentered size={{
+            base: 'full',
+            sm: 'md',
+            md: '2xl'
+        }}
+        scrollBehavior={'inside'}
+        >
             <ModalOverlay />
             <ModalContent>
                 <ModalCloseButton />
                 <ModalBody py={'50px'} pr={'30px'}>
-                    <VStack alignItems={'stretch'} spacing={5}>
-                        <Flex gap={'30px'} alignItems={'center'}>
+                    <VStack alignItems={'stretch'} gap={'30px'} spacing={0}>
+                        <Flex gap={['10px']} alignItems={['flex-start', null, null, 'center']} flexDir={['column', null, null, 'row',]}>
                             <Box>Name: </Box>
                             <Input value={name} onChange={handleSetInput} />
                         </Flex>
-                        <Flex gap={'30px'}>
+                        <Flex gap={['10px']} flexDir={['column', null, null, 'row',]}>
                             <Box>Status: </Box>
                             <RadioFilter
                                 value={status}
@@ -69,7 +73,7 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
                                 type={'status'}
                             />
                         </Flex>
-                        <Flex gap={'30px'}>
+                        <Flex gap={['10px']} flexDir={['column', null, null, 'row',]}>
                             <Box>Gender: </Box>
                             <RadioFilter
                                 value={gender}
@@ -78,7 +82,7 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
                                 type={'gender'}
                             />
                         </Flex>
-                        <Flex gap={'30px'}>
+                        <Flex gap={['10px']} flexDir={['column', null, null, 'row',]}>
                             <Box>Species: </Box>
                             <RadioFilter
                                 value={species}
@@ -89,9 +93,12 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
                         </Flex>
                     </VStack>
                 </ModalBody>
-                <ModalFooter justifyContent={'flex-start'}>
-                    <Button colorScheme={'facebook'} onClick={handleClearFilters}>
-                        Clear filters
+                <ModalFooter gap={'30px'}>
+                    <Button colorScheme={'facebook'} onClick={handleSetFilters}>
+                        Submit
+                    </Button>
+                    <Button onClick={handleOnClose}>
+                        Close
                     </Button>
                 </ModalFooter>
             </ModalContent>

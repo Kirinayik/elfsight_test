@@ -16,7 +16,7 @@ const RadioFilter: FC<RadioFilterProps> = ({ value, dispatch, radios, type }) =>
 
     return (
         <RadioGroup onChange={handleOnChange} value={value}>
-            <Stack direction="row" gap={'15px'}>
+            <Stack direction="row" gap={'15px'} spacing={'0'} flexWrap={'wrap'}>
                 {radios.map(({ value: radioValue, name }) => (
                     <Radio key={radioValue} value={radioValue}>
                         {name}

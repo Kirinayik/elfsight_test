@@ -8,4 +8,13 @@ export const theme = extendTheme({
             },
         },
     },
+    breakpoints: {
+        base: '0px',
+        sm: '450px',
+        '2sm': '600px',
+        md: '680px',
+        lg: '1080px',
+        xl: '1200px',
+        '2xl': '1500px',
+    }
 })
