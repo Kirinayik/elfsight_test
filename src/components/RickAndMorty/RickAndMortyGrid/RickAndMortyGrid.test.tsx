@@ -1,11 +1,11 @@
 import 'whatwg-fetch'
 import '@testing-library/jest-dom'
 import { act, fireEvent, waitFor } from '@testing-library/react'
-import { modalDelay, renderWithProviders } from '../../../utils/testUtils'
-import RickAndMortyGrid from './RickAndMortyGrid'
-import { updateCharacters } from '../../../store/rickAndMorty/rickAndMortyState'
-import { characters } from '../../../mocks/characters'
-import { setupStore } from '../../../store'
+import { modalDelay, renderWithProviders } from '@utils/testUtils'
+import { RickAndMortyGrid } from './RickAndMortyGrid'
+import { updateCharacters } from '@store/rickAndMorty/rickAndMortyState'
+import { characters } from '@mocks/characters'
+import { setupStore } from '@store/index'
 
 test('Fetch and show characters list on mount', async () => {
     const { getByTestId } = renderWithProviders(<RickAndMortyGrid />)

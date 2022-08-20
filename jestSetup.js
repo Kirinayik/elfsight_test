@@ -1,4 +1,4 @@
-import { server } from './src/mocks/api/server'
+import { server } from '@mocks/api/server'
 
 beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())

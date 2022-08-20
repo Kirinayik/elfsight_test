@@ -1,12 +1,12 @@
 import { Text, VStack } from '@chakra-ui/react'
 import { FC } from 'react'
-import { IEpisode } from '../../../../../types/types'
+import { IEpisode } from '@global/types'
 
 type GalleryFieldItemProps = {
     episode: IEpisode
 }
 
-const GalleryFieldItem: FC<GalleryFieldItemProps> = ({ episode: { name, episode } }) => {
+export const GalleryFieldItem: FC<GalleryFieldItemProps> = ({ episode: { name, episode } }) => {
     return (
         <VStack flex={'0 0 100px'} maxW={'100px'} alignItems={'flex-start'} spacing={0}>
             <Text fontSize={'14px'} noOfLines={1}>
@@ -16,5 +16,3 @@ const GalleryFieldItem: FC<GalleryFieldItemProps> = ({ episode: { name, episode 
         </VStack>
     )
 }
-
-export default GalleryFieldItem

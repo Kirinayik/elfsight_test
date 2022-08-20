@@ -12,18 +12,18 @@ import {
     ModalOverlay,
     VStack,
 } from '@chakra-ui/react'
-import RadioFilter from './common/RadioFilter'
-import { filterInitialState, filterReducer } from '../../../reducers/filterReducer'
-import { useFilterRadios } from '../../../hooks/useFilterRadios'
-import { useAppDispatch } from '../../../store/hooks'
-import { setFilters } from '../../../store/rickAndMorty/rickAndMortyState'
+import { RadioFilter } from './common/RadioFilter'
+import { filterInitialState, filterReducer } from '@reducers/filterReducer'
+import { useFilterRadios } from '@hooks/useFilterRadios'
+import { useAppDispatch } from '@store/hooks'
+import { setFilters } from '@store/rickAndMorty/rickAndMortyState'
 
 type RickAndMortyFilterModalProps = {
     isOpen: boolean
     handleSetIsOpen: () => void
 }
 
-const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, handleSetIsOpen }) => {
+export const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, handleSetIsOpen }) => {
     const { statusRadios, speciesRadios, genderRadios } = useFilterRadios()
     const dispatch = useAppDispatch()
     const [currentState, currentDispatch] = useReducer(filterReducer, filterInitialState)
@@ -111,5 +111,3 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
         </Modal>
     )
 }
-
-export default RickAndMortyFilterModal

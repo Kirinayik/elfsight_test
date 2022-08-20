@@ -1,16 +1,16 @@
 import { FC } from 'react'
 import { Box, Flex, Skeleton } from '@chakra-ui/react'
-import { useEpisodesQuery } from '../../../../../store/rickAndMorty/rickAndMortyApi'
-import { getEpisodesId } from '../../../../../utils/getEpisodesId'
-import GalleryFieldItem from './GalleryFieldItem'
-import { IEpisode } from '../../../../../types/types'
+import { useEpisodesQuery } from '@store/rickAndMorty/rickAndMortyApi'
+import { getEpisodesId } from '@utils/getEpisodesId'
+import { GalleryFieldItem } from './GalleryFieldItem'
+import { IEpisode } from '@global/types'
 
 type GalleryFieldProps = {
     gallery: string[]
     title: string
 }
 
-const GalleryField: FC<GalleryFieldProps> = ({ title, gallery }) => {
+export const GalleryField: FC<GalleryFieldProps> = ({ title, gallery }) => {
     const { data, error, isLoading } = useEpisodesQuery(getEpisodesId(gallery))
 
     if (error) {
@@ -42,5 +42,3 @@ const GalleryField: FC<GalleryFieldProps> = ({ title, gallery }) => {
         </Box>
     )
 }
-
-export default GalleryField

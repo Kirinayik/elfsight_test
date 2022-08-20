@@ -1,7 +1,7 @@
 import { fireEvent, waitFor } from '@testing-library/react'
-import { modalDelay, renderWithProviders } from '../../../utils/testUtils'
-import RickAndMortyFilter from './RickAndMortyFilter'
-import RickAndMortyFilterModal from './RickAndMortyFilterModal'
+import { modalDelay, renderWithProviders } from '@utils/testUtils'
+import { RickAndMortyFilter } from './RickAndMortyFilter'
+import { RickAndMortyFilterModal } from './RickAndMortyFilterModal'
 import '@testing-library/jest-dom'
 
 test('Open and close filter modal', () => {

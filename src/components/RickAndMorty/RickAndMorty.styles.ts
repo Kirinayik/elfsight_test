@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Box, GridItem } from '@chakra-ui/react'
-import { theme } from '../../assets/styles/theme'
-import { IStatus } from '../../types/types'
+import { theme } from '@assets/styles/theme'
+import { IStatus } from '@global/types'
 
 type ItemStatusProps = {
     status: IStatus

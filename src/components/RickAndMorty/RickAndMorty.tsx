@@ -1,8 +1,8 @@
 import { VStack } from '@chakra-ui/react'
-import RickAndMortyGrid from './RickAndMortyGrid/RickAndMortyGrid'
-import RickAndMortyFilter from './RickAndMortyFilter/RickAndMortyFilter'
+import { RickAndMortyGrid } from './RickAndMortyGrid/RickAndMortyGrid'
+import { RickAndMortyFilter } from './RickAndMortyFilter/RickAndMortyFilter'
 
-const RickAndMorty = () => {
+export const RickAndMorty = () => {
     return (
         <VStack alignItems={'stretch'} spacing={'15px'} flexGrow={'1'}>
             <RickAndMortyFilter />
@@ -10,5 +10,3 @@ const RickAndMorty = () => {
         </VStack>
     )
 }
-
-export default RickAndMorty

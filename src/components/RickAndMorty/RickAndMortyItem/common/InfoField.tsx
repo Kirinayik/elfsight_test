@@ -6,7 +6,7 @@ type InfoFieldProps = {
     value: string
 }
 
-const InfoField: FC<InfoFieldProps> = ({ text, value }) => {
+export const InfoField: FC<InfoFieldProps> = ({ text, value }) => {
     return (
         <VStack spacing="0" alignItems={'flex-start'}>
             <Box fontWeight={'700'}>{text}</Box>
@@ -14,5 +14,3 @@ const InfoField: FC<InfoFieldProps> = ({ text, value }) => {
         </VStack>
     )
 }
-
-export default InfoField

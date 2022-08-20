@@ -1,26 +1,29 @@
 {
-  "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
-  },
-  "include": [
-    "src"
-  ],"exclude": [
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts"
-  ]
+    "compilerOptions": {
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": false,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "baseUrl": "./src",
+        "paths": {
+            "@store/*": ["./store/*"],
+            "@utils/*": ["./utils/*"],
+            "@assets/*": ["./assets/*"],
+            "@components/*": ["./components/*"],
+            "@global/*": ["./global/*"],
+            "@hooks/*": ["./hooks/*"],
+            "@mocks/*": ["./mocks/*"],
+            "@reducers/*": ["./reducers/*"]
+        }
+    },
+    "include": ["src"],
+    "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"]
 }

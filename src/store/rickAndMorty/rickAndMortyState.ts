@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice, EntityState, PayloadAction } from '@reduxjs/toolkit'
-import { ICharacter, IFilter, RootState } from '../../types/types'
+import { ICharacter, IFilter, RootState } from '@global/types'
 
 export interface IState {
     filters: IFilter
@@ -49,5 +49,6 @@ const rickAndMortySlice = createSlice({
 
 export const charactersSelectors = charactersAdapter.getSelectors<RootState>((state) => state.rickAndMorty.characters)
 
-export const { setFilters, setCharacters, updateCharacters, nextPage } = rickAndMortySlice.actions
+export const actions = rickAndMortySlice.actions
+export const { setFilters, setCharacters, updateCharacters, nextPage } = actions
 export default rickAndMortySlice.reducer

@@ -1,17 +1,17 @@
 import { VStack } from '@chakra-ui/react'
 import { ItemHoverContainer } from '../RickAndMorty.styles'
 import { FC } from 'react'
-import { ICharacter } from '../../../types/types'
-import Title from './common/Title'
-import StatusField from './common/StatusField'
-import InfoField from './common/InfoField'
-import { useEpisodesQuery } from '../../../store/rickAndMorty/rickAndMortyApi'
+import { ICharacter } from '@global/types'
+import { Title } from './common/Title'
+import { StatusField } from './common/StatusField'
+import { InfoField } from './common/InfoField'
+import { useEpisodesQuery } from '@store/rickAndMorty/rickAndMortyApi'
 
 type RickAndMortyHoverProps = {
     character: ICharacter
 }
 
-const RickAndMortyItemHover: FC<RickAndMortyHoverProps> = ({
+export const RickAndMortyItemHover: FC<RickAndMortyHoverProps> = ({
     character: { location, name, status, species, episode },
 }) => {
     const { data } = useEpisodesQuery(episode[0].split('/').slice(-1)[0])
@@ -29,5 +29,3 @@ const RickAndMortyItemHover: FC<RickAndMortyHoverProps> = ({
         </ItemHoverContainer>
     )
 }
-
-export default RickAndMortyItemHover

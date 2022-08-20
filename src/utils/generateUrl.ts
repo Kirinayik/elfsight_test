@@ -1,4 +1,4 @@
-import { IFilter } from '../types/types'
+import { IFilter } from '@global/types'
 
 export const generateUrl = (filters: IFilter, page: number): string => {
     const params = []

@@ -1,4 +1,4 @@
-import { ICharacter } from '../types/types'
+import { ICharacter } from '@global/types'
 
 export const characters: ICharacter[] = [
     {

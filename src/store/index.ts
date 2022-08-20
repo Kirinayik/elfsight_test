@@ -1,7 +1,7 @@
 import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit'
 import { rickAndMortyApi } from './rickAndMorty/rickAndMortyApi'
 import rickAndMortyReducer from './rickAndMorty/rickAndMortyState'
-import { RootState } from '../types/types'
+import { RootState } from '../global/types'
 
 export const rootReducer = combineReducers({
     rickAndMorty: rickAndMortyReducer,

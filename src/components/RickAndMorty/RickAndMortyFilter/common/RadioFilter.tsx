@@ -1,6 +1,6 @@
 import { Radio, RadioGroup, Stack } from '@chakra-ui/react'
 import { Dispatch, FC } from 'react'
-import { Action } from '../../../../types/types'
+import { Action } from '@global/types'
 
 type RadioFilterProps = {
     radios: { value: string; name: string }[]
@@ -9,7 +9,7 @@ type RadioFilterProps = {
     dispatch: Dispatch<Action>
 }
 
-const RadioFilter: FC<RadioFilterProps> = ({ value, dispatch, radios, type }) => {
+export const RadioFilter: FC<RadioFilterProps> = ({ value, dispatch, radios, type }) => {
     const handleOnChange = (e: string) => {
         dispatch({ type, payload: e })
     }
@@ -26,5 +26,3 @@ const RadioFilter: FC<RadioFilterProps> = ({ value, dispatch, radios, type }) =>
         </RadioGroup>
     )
 }
-
-export default RadioFilter

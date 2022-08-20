@@ -1,4 +1,4 @@
-import { Action, IFilter } from '../types/types'
+import { Action, IFilter } from '@global/types'
 
 export const filterInitialState: IFilter = {
     name: '',

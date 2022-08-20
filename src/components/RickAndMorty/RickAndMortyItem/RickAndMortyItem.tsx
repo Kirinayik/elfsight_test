@@ -1,16 +1,16 @@
 import { Image, Skeleton } from '@chakra-ui/react'
 import { FC, useState } from 'react'
-import { ICharacter } from '../../../types/types'
+import { ICharacter } from '@global/types'
 import { ItemContainer } from '../RickAndMorty.styles'
-import { useModal } from '../../../hooks/useModal'
-import RickAndMortyItemModal from './RickAndMortyItemModal'
-import RickAndMortyItemHover from './RickAndMortyItemHover'
+import { useModal } from '@hooks/useModal'
+import { RickAndMortyItemModal } from './RickAndMortyItemModal'
+import { RickAndMortyItemHover } from './RickAndMortyItemHover'
 
 type RickAndMortyItemProps = {
     character: ICharacter
 }
 
-const RickAndMortyItem: FC<RickAndMortyItemProps> = ({ character }) => {
+export const RickAndMortyItem: FC<RickAndMortyItemProps> = ({ character }) => {
     const [isOpen, handleSetIsOpen] = useModal()
     const { name, image } = character
     const [imageLoaded, setImageLoaded] = useState<boolean>(false)
@@ -27,5 +27,3 @@ const RickAndMortyItem: FC<RickAndMortyItemProps> = ({ character }) => {
         </ItemContainer>
     )
 }
-
-export default RickAndMortyItem

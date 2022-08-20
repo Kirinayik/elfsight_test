@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IEpisode, IRickAndMortyResponse } from '../../types/types'
+import { IEpisode, IRickAndMortyResponse } from '@global/types'
 import { setCharacters, updateCharacters } from './rickAndMortyState'
 
 export const rickAndMortyApi = createApi({

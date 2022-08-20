@@ -1,4 +1,4 @@
-import { rootReducer, setupStore } from '../store'
+import { rootReducer, setupStore } from '@store/index'
 
 export interface IRickAndMortyResponse {
     info: IInfo

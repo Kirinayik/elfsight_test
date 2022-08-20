@@ -1,8 +1,8 @@
 import { Button, HStack } from '@chakra-ui/react'
-import RickAndMortyFilterModal from './RickAndMortyFilterModal'
-import { useModal } from '../../../hooks/useModal'
+import { RickAndMortyFilterModal } from './RickAndMortyFilterModal'
+import { useModal } from '@hooks/useModal'
 
-const RickAndMortyFilter = () => {
+export const RickAndMortyFilter = () => {
     const [isOpen, handleSetIsOpen] = useModal()
 
     return (
@@ -14,5 +14,3 @@ const RickAndMortyFilter = () => {
         </HStack>
     )
 }
-
-export default RickAndMortyFilter

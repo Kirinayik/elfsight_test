@@ -10,11 +10,11 @@ import {
     VStack,
 } from '@chakra-ui/react'
 import { FC } from 'react'
-import { ICharacter } from '../../../types/types'
-import Title from './common/Title'
-import InfoField from './common/InfoField'
-import StatusField from './common/StatusField'
-import GalleryField from './common/GalleryField/GalleryField'
+import { ICharacter } from '@global/types'
+import { Title } from './common/Title'
+import { InfoField } from './common/InfoField'
+import { StatusField } from './common/StatusField'
+import { GalleryField } from './common/GalleryField/GalleryField'
 
 type RickAndMortyModalProps = {
     character: ICharacter
@@ -22,7 +22,7 @@ type RickAndMortyModalProps = {
     handleSetIsOpen: () => void
 }
 
-const RickAndMortyItemModal: FC<RickAndMortyModalProps> = ({
+export const RickAndMortyItemModal: FC<RickAndMortyModalProps> = ({
     character: { name, gender, origin, image, status, species, episode },
     isOpen,
     handleSetIsOpen,
@@ -61,5 +61,3 @@ const RickAndMortyItemModal: FC<RickAndMortyModalProps> = ({
         </Modal>
     )
 }
-
-export default RickAndMortyItemModal
