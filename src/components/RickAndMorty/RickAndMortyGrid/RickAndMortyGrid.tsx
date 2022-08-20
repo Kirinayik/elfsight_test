@@ -19,13 +19,14 @@ const RickAndMortyGrid = () => {
                 templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
                 templateRows={'repeat(auto-fit, minmax(240px, 1fr))'}
                 gap={6}
+                data-testid={'characters-list'}
             >
                 {characters &&
                     characters.map((character) => <RickAndMortyItem key={character.id} character={character} />)}
             </Grid>
             {isFetching ? (
                 <Flex justifyContent={'center'}>
-                    <Spinner size={'lg'} />
+                    <Spinner size={'lg'} data-testid={'spinner'} />
                 </Flex>
             ) : (
                 <>

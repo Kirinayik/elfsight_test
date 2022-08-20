@@ -70,7 +70,7 @@ const RickAndMortyFilterModal: FC<RickAndMortyFilterModalProps> = ({ isOpen, han
                             flexDir={['column', null, null, 'row']}
                         >
                             <Box>Name: </Box>
-                            <Input value={name} onChange={handleSetInput} />
+                            <Input aria-label={'character name'} value={name} onChange={handleSetInput} />
                         </Flex>
                         <Flex gap={['10px']} flexDir={['column', null, null, 'row']}>
                             <Box>Status: </Box>

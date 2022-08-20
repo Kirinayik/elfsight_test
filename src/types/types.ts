@@ -1,4 +1,4 @@
-import { store } from '../store'
+import { rootReducer, setupStore } from '../store'
 
 export interface IRickAndMortyResponse {
     info: IInfo
@@ -21,10 +21,13 @@ export interface ICharacter {
     episode: string[]
     location: {
         name: string
+        url: string
     }
     origin: {
         name: string
+        url: string
     }
+    url: string
     gender: string
 }
 
@@ -48,5 +51,6 @@ export interface Action {
     payload: string
 }
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof rootReducer>
+export type AppStore = ReturnType<typeof setupStore>
+export type AppDispatch = AppStore['dispatch']

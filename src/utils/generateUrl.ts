@@ -13,5 +13,5 @@ export const generateUrl = (filters: IFilter, page: number): string => {
         if (filters[type] !== 'all') params.push(`${type}=${filters[type]}`)
     }
 
-    return `?page=${page}&` + params.join('&')
+    return `?page=${page}${params.length > 0 ? '&' : ''}` + params.join('&')
 }
